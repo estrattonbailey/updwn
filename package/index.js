@@ -1,36 +1,32 @@
 import srraf from 'srraf'
 import svel from 'svel'
-import loop from 'loop.js'
 
-const merge = (target, ...args) => args.reduce((target, arg) => {
-  Object.keys(arg).forEach(k => { target[k] = arg[k] })
-  return target
-}, target)
-
-export default (opts = {}) => {
+export default (up, down, config = {}) => {
   let position = null
-  const emitter = loop()
 
-  const scroller = ({ speed = 50 }) => srraf ? srraf.scroll.use(({ curr, prev }, event) => {
-    const fast = svel(curr, event) > speed || 50
+  const scroller = ({ speed = 50, ...opts }) => srraf ? srraf.scroll.use(({ curr, prev }, event) => {
+    const { velocity, flush } = svel(curr, event, opts)
+    const threshold = velocity > (speed !== undefined ? speed : 50)
 
-    if (curr >= prev && position !== 'down' && fast) {
+    if (curr >= prev && position !== 'down' && threshold) {
       position = 'down'
-      emitter.emit(position)
-    } else if (curr <= prev && position !== 'up' && fast) {
+      down && down()
+      flush()
+    } else if (curr <= prev && position !== 'up' && threshold) {
       position = 'up'
-      emitter.emit(position)
-    } else if (position !== 'static' && !fast) {
-      position = 'static'
-      emitter.emit('static')
+      up && up()
+      flush()
     }
   }).update() : {}
 
-  return Object.create(merge(scroller(opts), emitter), {
-    position: {
-      get() {
-        return position
+  return Object.create(
+    scroller(config),
+    {
+      position: {
+        get() {
+          return position
+        },
       },
-    },
-  })
+    }
+  )
 }
