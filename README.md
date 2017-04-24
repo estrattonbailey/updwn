@@ -1,5 +1,5 @@
 # updwn
-Tiny up/down scroll detection. [Demo](http://estrattonbailey.com/updwn/). ~419b gzipped (1.7kb with dependencies).
+Tiny up/down scroll detection. [Demo](http://estrattonbailey.com/updwn/). **~2kb with dependencies.**
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](http://standardjs.com)
 
