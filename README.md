@@ -13,24 +13,21 @@ Defined up and down scroll handlers, and pass an optional config object. Basic u
 ```javascript
 import updwn from 'updwn'
 
-const up = () => {
-  console.log('Scrolling up!')
-})
-const down = () => {
-  console.log('Scrolling down!')
-})
+const updown = updwn({ speed: 50 })
 
-const updown = updwn(up, down, { speed: 50 })
+updown.on('up', () => console.log('Scrolling up!'))
+updown.on('down', () => console.log('Scrolling down!'))
+updown.on('static', () => console.log('Not scrolling fast enough.'))
 
-updown.position() // up, down, or static
+updown.position() // returns 'up', 'down', or 'static'
+
+// Inherits these methods from underlying srraf instance
+updown.update() // check position
 updown.destroy() // stop listening
 ```
 
 ## API
-Updwn takes three arguments: `up`, `down` and a `config` object.
-
-### `up` and `down`
-These should be functions, and receive no arguments. They are fired each time the scroll direction changes, provided the scroll speed is faster than the defined `config.speed` property.
+Updwn only takes an optional `config` object.
 
 ### `config`
 The only property added by this library is `speed`. Any further properties that are assigned to this object will be passed to the underlying Svel instance. See the [Svel README](https://github.com/estrattonbailey/svel) for more info.
@@ -39,6 +36,7 @@ The only property added by this library is `speed`. Any further properties that 
 ## Dependencies
 - [srraf:](https://github.com/estrattonbailey/srraf) Better scroll and resize listeners using requestAnimationFrame. by [@estrattonbailey](https://github.com/estrattonbailey)
 - [svel:](https://github.com/estrattonbailey/svel) Calculate velocity over an interval for scroll or resize events. by [@estrattonbailey](https://github.com/estrattonbailey)
+- [loop.js:](https://github.com/estrattonbailey/loop.js) Bare-bones pub/sub style event emitter. by [@estrattonbailey](https://github.com/estrattonbailey)
 
 ## Example
 TODO: To run the example, clone this repo, then:
