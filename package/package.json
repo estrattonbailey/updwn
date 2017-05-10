@@ -45,7 +45,6 @@
   },
   "dependencies": {
     "loop.js": "^0.3.0",
-    "srraf": "^0.1.0",
-    "svel": "^0.3.0"
+    "srraf": "^1.0.1"
   }
 }
