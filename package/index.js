@@ -25,17 +25,11 @@ export default (config = {}) => {
     }
   }).update() : {}
 
-  return Object.create(
-    {
-      ...scroller(config),
-      ...emitter
+  return {
+    ...scroller(config),
+    ...emitter,
+    get position() {
+      return position
     },
-    {
-      position: {
-        get() {
-          return position
-        },
-      },
-    }
-  )
+  }
 }
