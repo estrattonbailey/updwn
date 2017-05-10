@@ -1,5 +1,5 @@
 # updwn
-Tiny up/down scroll detection. [Demo](http://estrattonbailey.com/updwn/). **~2kb with dependencies.**
+Tiny up/down scroll detection. [Demo](http://estrattonbailey.com/updwn/). **~1.8kb with dependencies.**
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](http://standardjs.com)
 
@@ -17,9 +17,8 @@ const updown = updwn({ speed: 50 })
 
 updown.on('up', () => console.log('Scrolling up!'))
 updown.on('down', () => console.log('Scrolling down!'))
-updown.on('static', () => console.log('Not scrolling fast enough.'))
 
-updown.position() // returns 'up', 'down', or 'static'
+updown.position() // returns 'up', 'down'
 
 // Inherits these methods from underlying srraf instance
 updown.update() // check position
@@ -35,7 +34,6 @@ The only property added by this library is `speed`. Any further properties that 
 
 ## Dependencies
 - [srraf:](https://github.com/estrattonbailey/srraf) Better scroll and resize listeners using requestAnimationFrame. by [@estrattonbailey](https://github.com/estrattonbailey)
-- [svel:](https://github.com/estrattonbailey/svel) Calculate velocity over an interval for scroll or resize events. by [@estrattonbailey](https://github.com/estrattonbailey)
 - [loop.js:](https://github.com/estrattonbailey/loop.js) Bare-bones pub/sub style event emitter. by [@estrattonbailey](https://github.com/estrattonbailey)
 
 ## Example
