@@ -1,6 +1,6 @@
 {
   "name": "updwn",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Tiny up/down scroll detection.",
   "main": "dist/index.js",
   "scripts": {
