@@ -1,7 +1,7 @@
 import srraf from 'srraf'
 import loop from 'loop.js'
 
-export default (config = {}, name) => {
+export default (config = {}) => {
   let position = null
   let time = 0
   let prevtime = 0
