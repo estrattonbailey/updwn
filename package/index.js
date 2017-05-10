@@ -2,7 +2,7 @@ import srraf from 'srraf'
 import loop from 'loop.js'
 
 export default (config = {}, name) => {
-  let position = 'static'
+  let position = null
   let time = 0
   let prevtime = 0
 
@@ -12,7 +12,7 @@ export default (config = {}, name) => {
     time = event.timeStamp - prevtime
     prevtime = event.timeStamp
 
-    const distance = curr - prev < 0 ? (curr - prev) * -1 : curr - prev
+    const distance = Math.abs(curr - prev)
     const velocity = ((distance / time) || 0) * (config.interval || 100)
     const threshold = velocity > speed
 
@@ -25,8 +25,6 @@ export default (config = {}, name) => {
       handler('down')
     } else if (curr <= prev && position !== 'up' && threshold) {
       handler('up')
-    } else if (!threshold) {
-      handler('static')
     }
   }).update() : {}
 
