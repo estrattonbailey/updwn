@@ -1,0 +1,33 @@
+{
+  "name": "updwn",
+  "version": "0.4.3",
+  "description": "Tiny up/down scroll detection.",
+  "source": "index.js",
+  "module": "dist/updwn.es.js",
+  "main": "dist/updwn.js",
+  "umd:main": "dist/updwn.umd.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "microbundle build",
+    "watch": "microbundle watch",
+    "publish": "npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/estrattonbailey/updwn.git"
+  },
+  "author": "estrattonbailey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/estrattonbailey/updwn/issues"
+  },
+  "homepage": "https://github.com/estrattonbailey/updwn#readme",
+  "devDependencies": {
+    "microbundle": "^0.4.4"
+  },
+  "dependencies": {
+    "srraf": "^2.0.1"
+  }
+}
